@@ -2,6 +2,10 @@
 
 read "F?Enter 1 for running simple_ops.py or 2 for running torch_nn_ops.py: "
 
+# Add in support for different dialects ... 
+
+# read "DIALECT?Which MLIR dialect would you like to generate (stablehlo, tosa, linalg) ? "
+
 if [[ $F == "1" ]]; then
     FILE=simple_ops.py
 else
@@ -12,15 +16,16 @@ python $FILE
 
 read "ANSWER?Save output and generate python file?(y/n) "
 
-# if [[ $ANSWER == "y" ]]; then
-#     read "NAME?Enter name of file: "
+if [[ $ANSWER == "y" ]]; then
+    read "NAME?Enter name of file: "
 
-#     python $FILE > /Users/dloke/Documents/tt/tt-mlir/test/ttmlir/$NAME.mlir
+    MLIR_FILE_LOC=../mlir_files/stablehlo
+    python $FILE > $MLIR_FILE_LOC/$NAME.mlir
 
-#     cat $FILE > $NAME.py
+    cat $FILE > torch_scripts/$NAME.py
 
-#     echo "Generated mlir file at /Users/dloke/Documents/tt/tt-mlir/test/ttmlir/$NAME.mlir"
+    echo "Generated mlir file at $MLIR_FILE_LOC/$NAME.mlir"
 
-#     echo "Generated copy of python script at $PWD/$NAME.py"
-# fi
+    echo "Generated copy of python script at torch_scripts/$NAME.py"
+fi
 
