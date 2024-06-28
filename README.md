@@ -7,3 +7,5 @@ Note: These workflows can also be seen as different potential entrypoints into t
 # Structure
 
 The mlir_files subdirectory is where all generated mlir files live. All mlir files end in .mlir regardless of dialect so for the ease of finding what dialect file you want and being able to compare the same model in different dialects each subdirectory in mlir_files is a dialect name and the files inside are of that dialect
+
+The other subdirectories such as JAX and PyTorch contain scripts and notebooks for generating mlir files from those frameworks
